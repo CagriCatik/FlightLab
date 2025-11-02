@@ -65,10 +65,6 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/CagriCatik/FlightLab
-    #- icon: fontawesome/brands/linkedin
-    #  link: https://www.linkedin.com/company/example
-    #- icon: fontawesome/brands/x-twitter
-    #  link: https://x.com/example
   analytics:
     provider: google
     property: G-XXXXXXXXXX

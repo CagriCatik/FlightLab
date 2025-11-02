@@ -1,4 +1,6 @@
-# FlightLab: 3D Printed RC Plane Design and Build Documentation
+# FlightLab
+
+> 3D Printed RC Plane Design and Build Documentation
 
 Welcome to **FlightLab** — a complete, structured documentation of the design, analysis, and fabrication process for a **3D printed RC aircraft**.
 
@@ -35,6 +37,6 @@ Add the following acknowledgment and inspiration section to the end of the docum
 This documentation was inspired in part by the comprehensive Drone Design design tutorials available from the **Dynamix Systems** and similar educational sources. In particular, the workflow and structural design methods outlined here drew conceptual influence from the video series available at:
 
 **Reference:**
-[3D Printed RC Plane Design Series – YouTube Playlist](https://www.youtube.com/watch?v=PuLbafql1lM&list=PLQpp11UVG0BpugWGMypDLL-O1jd6pH7je)
+[3D Printed RC Plane Design Series – YouTube Playlist](https://www.youtube.com/playlist?list=PLQpp11UVG0BpugWGMypDLL-O1jd6pH7je)
 
 This playlist provided valuable insight into iterative design, modular assembly, and 3D printing considerations for lightweight Drone Design structures. It served as an educational foundation for refining both the design logic and documentation approach used throughout the **FlightLab** project.
