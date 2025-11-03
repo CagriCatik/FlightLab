@@ -1,12 +1,11 @@
 # .github/workflows/deploy.yml
-# MkDocs Material: build and deploy to GitHub Pages
+# Build and deploy MkDocs from ./webpage to GitHub Pages
 
 name: Deploy MkDocs to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -17,6 +16,9 @@ permissions:
 concurrency:
   group: pages
   cancel-in-progress: true
+
+env:
+  MKDOCS_DIR: webpage           # folder containing mkdocs.yml and docs/
 
 jobs:
   build:
@@ -32,30 +34,38 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements-doc.txt
 
-      # Check existence of mkdocs.yml and docs/ directory
       - name: Validate project structure
         run: |
-          echo "Current directory:" && pwd
-          echo "Repo contents:" && ls -la
-          test -f mkdocs.yml || (echo "mkdocs.yml missing" && exit 1)
-          test -d docs || (echo "docs directory missing" && exit 1)
-          test -f docs/index.md || (echo "docs/index.md missing" && exit 1)
+          set -euo pipefail
+          test -d "$MKDOCS_DIR" || (echo "$MKDOCS_DIR/ missing" && exit 1)
+          test -f "$MKDOCS_DIR/mkdocs.yml" || (echo "$MKDOCS_DIR/mkdocs.yml missing" && exit 1)
+          test -d "$MKDOCS_DIR/docs" || (echo "$MKDOCS_DIR/docs/ missing" && exit 1)
+          test -f "$MKDOCS_DIR/docs/index.md" || (echo "$MKDOCS_DIR/docs/index.md missing" && exit 1)
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
       - name: Build site
-        run: mkdocs build --strict --site-dir site
+        working-directory: ${{ env.MKDOCS_DIR }}
+        run: mkdocs build --strict
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./site
+          path: ${{ env.MKDOCS_DIR }}/site
 
   deploy:
     runs-on: ubuntu-latest
