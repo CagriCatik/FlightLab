@@ -1,0 +1,118 @@
+
+site_name: FlightLab
+site_description: Developer docs and guides
+site_url: https://cagricatik.github.io/FlightLab/
+repo_url: https://github.com/CagriCatik/FlightLab
+repo_name: FlightLab
+edit_uri: edit/main/docs/
+docs_dir: docs
+site_dir: site
+strict: true
+
+theme:
+  name: material
+  language: en
+  logo: assets/logo.png
+  favicon: assets/favicon.png
+  palette:
+    - scheme: ae86
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: ae86-dark
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.top
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+    - content.action.edit
+    - content.tooltips
+    - announce.dismiss
+
+plugins:
+  - search
+  - minify:
+      minify_html: true
+  #- git-revision-date-localized:
+  #    fallback_to_build_date: true
+  #    enable_creation_date: true
+  - glightbox
+  - awesome-pages
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      combine_header_slug: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/CagriCatik
+  consent:
+    title: Cookie consent
+    description: We use cookies to improve your experience.
+
+nav:
+  - Home: index.md
+  - Build Log:
+      - Concept: guides/part-1-concept.md
+      - Winglets and Tail Tips: guides/part-2-winglets-and-tail-tips.md
+      - Aerodynamics Analysis: guides/part-3-aerodynamics-analysis.md
+      - Slice/Export Main Parts: guides/part-4-slice-export-main-parts.md
+      - Fuselage: guides/part-5-structure-fuselage.md
+      - Wing: guides/part-6-structure-wing.md
+      - Aileron: guides/part-7-aileron.md
+      - Wing Box and Servo Mounts: guides/part-8-wing-box-and-servo-mounts.md
+      - Tail and Elevator Servo Mounts: guides/part-9-tail-and-elevator-servo-mounts.md
+      - Access Hatch: guides/part-10-access-hatch-i.md
+      - Tail and Elevator: guides/part-11-tail-and-elevator.md
+      - Splitting Parts: guides/part-12-splitting-parts.md
+      - Slicer and Printing Tutorial: guides/part-13-slicer-and-printing-tutorial.md
+  - SolidWorks Tutorials:
+      - Hollowing via Shell Feature: solidworks/shell_feature_1.md
+      - Shell Feature Failure Workaround: solidworks/shell_feature_2.md
+      - Fixing Fuselage Shell Errors: solidworks/shell_feature_3.md
+  - Changelog: changelog.md
+
+extra_javascript:
+  - javascripts/mathjax.js
+  
+extra_css:
+  - stylesheets/overrides.css
+  - stylesheets/extra.css
